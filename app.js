@@ -37,6 +37,10 @@ window.onload = function() {
   console.log(firstListItem.className);
   console.log(firstListItem.id);
 
+  // You can also use the classList property and it's add() and remove() methods
+  firstListItem.classList.add('cool-class'); // look in the app.css file to see the styles applied
+  firstListItem.classList.remove('item1');
+
   // You can change the style attribute of an element.
   firstListItem.style.fontSize = "21px";
   firstListItem.style.fontFamily = "Georgia, sans-serif";
@@ -46,6 +50,7 @@ window.onload = function() {
   notice.style.backgroundColor = "#f2dede";
   notice.style.color = "#a94442";
   notice.style.padding = "15px";
+  notice.style.fontWeight = 'bold';
 
   // The querySelector and querySelectorAll functions will allow you to use CSS style selectors to get elements.
   var link = document.querySelector("#testing a");
@@ -57,12 +62,19 @@ window.onload = function() {
   });
 
   var myButton = document.querySelector("button");
+  let colorChange = false;
   // You can also add a "click" or any other event this way
   myButton.onclick = function(element) {
     // When the button is clicked we change the color of the h1 tag.
     console.log("Button clicked!");
     var heading = document.querySelector("h1");
-    heading.style.color = "red";
+    if (!colorChange) {
+      heading.classList.add('highlight');
+      colorChange = true;
+    } else {
+      heading.classList.remove('highlight');
+      colorChange = false;
+    }
   };
 
 };
